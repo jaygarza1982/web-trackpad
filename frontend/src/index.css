@@ -24,3 +24,22 @@ body {
   border-radius: 50%;
   position: absolute;
 }
+
+.buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: absolute;
+  height: 20vh;
+  bottom: 0px;
+  width: 100vw;
+}
+
+.buttons-left {
+  background-color: #2e2e2e;
+  border: 1px solid white;
+}
+
+.buttons-right {
+  background-color: #2e2e2e;
+  border: 1px solid white;
+}

@@ -21,14 +21,14 @@ async def handle_connection(websocket: WebSocketServerProtocol, path: str) -> No
             if action == 'movemouse':
                 x: int = data.get('x', 0)
                 y: int = data.get('y', 0)
-                print(x, y, '\n')
+                print(x, y)
                 pyautogui.moveTo(x, y, _pause=False)
-                # response: Dict[str, Any] = {'status': 'success', 'action': 'movemouse', 'x': x, 'y': y}
-                # await websocket.send(json.dumps(response))
             elif action == 'click':
+                print('Left click')
                 pyautogui.click()
-                response: Dict[str, Any] = {'status': 'success', 'action': 'click'}
-                await websocket.send(json.dumps(response))
+            elif action == 'right-click':
+                print('Right click')
+                pyautogui.click(button='right')
             else:
                 response: Dict[str, Any] = {'status': 'error', 'message': 'Unknown action'}
                 await websocket.send(json.dumps(response))

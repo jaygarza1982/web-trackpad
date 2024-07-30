@@ -91,13 +91,33 @@ const App: React.FC = () => {
     setStartTouch(null);
   }, []);
 
+  function handleLeftClick() {
+    const message = JSON.stringify({
+      action: 'click',
+    });
+
+    ws?.send(message);
+  }
+
+  function handleRightClick() {
+    const message = JSON.stringify({
+      action: 'right-click',
+    });
+
+    ws?.send(message);
+  }
+
   return (
-    <div 
-      className="trackpad" 
+    <div
+      className="trackpad"
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
     >
+      <div className="buttons">
+        <div className="buttons-left" onClick={handleLeftClick}></div>
+        <div className="buttons-right" onClick={handleRightClick}></div>
+      </div>
     </div>
   );
 }
