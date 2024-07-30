@@ -29,6 +29,10 @@ async def handle_connection(websocket: WebSocketServerProtocol, path: str) -> No
             elif action == 'right-click':
                 print('Right click')
                 pyautogui.click(button='right')
+            elif action == 'key':
+                key: str = data.get('key', '')
+                print('key', key)
+                pyautogui.write(key)
             else:
                 response: Dict[str, Any] = {'status': 'error', 'message': 'Unknown action'}
                 await websocket.send(json.dumps(response))

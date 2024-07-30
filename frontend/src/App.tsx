@@ -107,6 +107,18 @@ const App: React.FC = () => {
     ws?.send(message);
   }
 
+  function handleTextInput(e: React.ChangeEvent<HTMLInputElement>) {
+    const newVal = e.currentTarget.value.split('').pop();
+    e.currentTarget.value = newVal || '';
+
+    const message = JSON.stringify({
+      action: 'key',
+      key: newVal || ''
+    });
+
+    ws?.send(message);
+  }
+
   return (
     <div
       className="trackpad"
@@ -114,6 +126,9 @@ const App: React.FC = () => {
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
     >
+      <div className="textfield">
+        <input type="text" onChange={handleTextInput} />
+      </div>
       <div className="buttons">
         <div className="buttons-left" onClick={handleLeftClick}></div>
         <div className="buttons-right" onClick={handleRightClick}></div>
