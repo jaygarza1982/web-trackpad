@@ -26,3 +26,4 @@ You can use this `Caddyfile` for a deployment to a host machine
     }
 }
 ```
+![Image of project design](https://github.com/jaygarza1982/web-trackpad/blob/main/[image.jpg](https://raw.githubusercontent.com/jaygarza1982/web-trackpad/main/web-trackpad-design.png))
